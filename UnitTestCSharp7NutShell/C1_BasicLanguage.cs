@@ -94,7 +94,7 @@ namespace UnitTestCSharp7NutShell
 		{
 			int x = 12345;
 			long y = x;
-			Assert.AreNotSame(y,x);
+			Assert.AreNotSame(y, x);
 		}
 
 		[TestMethod]
@@ -103,6 +103,47 @@ namespace UnitTestCSharp7NutShell
 			int x = 12345;
 			short s = (short)x;
 			Assert.AreNotSame(s, x);
+		}
+
+
+		[TestMethod]
+		public void MagnitudePreservedPrecisionLost()
+		{
+			int i1 = 100000001;
+			float f = i1; // Magnitude preserved, precision lost
+			int i2 = (int)f; // 100000000
+
+			Assert.AreNotEqual(i1, i2);
+		}
+
+		#region Increment and Decrement Operators
+
+		[TestMethod]
+
+		public void Outputs0xisnow1()
+		{
+			int x = 0;
+
+			Assert.AreEqual(0, x++);
+		}
+
+		[TestMethod]
+		public void Outputs1yisnow1()
+		{
+			int y = 0;
+
+			Assert.AreEqual(1, ++y);
+		}
+
+
+		#endregion
+
+		[TestMethod]
+		public void intOverflowtoMaxValue()
+		{
+			int i = int.MinValue;
+			i--;
+			Assert.AreEqual(int.MaxValue, i);
 		}
 
 		#endregion
