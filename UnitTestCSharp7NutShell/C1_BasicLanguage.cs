@@ -138,6 +138,7 @@ namespace UnitTestCSharp7NutShell
 
 		#endregion
 
+		#region Overflow & Overflow  check operators
 		[TestMethod]
 		public void intOverflowtoMaxValue()
 		{
@@ -145,6 +146,49 @@ namespace UnitTestCSharp7NutShell
 			i--;
 			Assert.AreEqual(int.MaxValue, i);
 		}
+
+		[TestMethod]
+		public void CheckedExpression()
+		{
+			int a = 1000000;
+			int b = 1000000;
+
+			try
+			{
+				int c = checked(a * b);
+				Assert.Fail("no exception thrown");
+			}
+			catch (Exception ex)
+			{
+				Assert.IsTrue(ex.Message == "Arithmetic operation resulted in an overflow.");
+			}
+
+		}
+
+		[TestMethod]
+		public void CheckedAllExpressionStatementBlock()
+		{
+			int a = 1000000;
+			int b = 1000000;
+
+			try
+			{
+				int c;
+
+				checked
+				{
+					c = a * b;
+				}
+
+				Assert.Fail("no exception thrown");
+			}
+			catch (Exception ex)
+			{
+				Assert.IsTrue(ex.Message == "Arithmetic operation resulted in an overflow.");
+			}
+
+		}
+		#endregion
 
 		#endregion
 
