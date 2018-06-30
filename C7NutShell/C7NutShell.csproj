@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C1_BasicLanguage\Panda.cs" />
-    <Compile Include="C1_BasicLanguage\Point.cs" />
+    <Compile Include="C2_BasicLanguage\Boolean\Dude.cs" />
+    <Compile Include="C2_BasicLanguage\Boolean\Numbers.cs" />
+    <Compile Include="C2_BasicLanguage\Basic\Panda.cs" />
+    <Compile Include="C2_BasicLanguage\Basic\Point.cs" />
+    <Compile Include="C2_BasicLanguage\Boolean\Umberalla.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

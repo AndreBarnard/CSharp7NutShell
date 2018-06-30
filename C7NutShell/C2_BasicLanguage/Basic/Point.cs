@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CSharp7NutShell
+namespace C7NutShell.C2_BasicLanguage
 {
 	public struct StructPoint { public int X, Y; }
 

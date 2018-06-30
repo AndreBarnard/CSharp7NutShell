@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSharp7NutShell
+namespace C7NutShell.C2_BasicLanguage
 {
 	public class Panda
 	{
