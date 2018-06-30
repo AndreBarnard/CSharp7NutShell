@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="C2_BasicLanguage\Array\SpeechSound.cs" />
     <Compile Include="C2_BasicLanguage\Boolean\Dude.cs" />
     <Compile Include="C2_BasicLanguage\Boolean\Numbers.cs" />
     <Compile Include="C2_BasicLanguage\Basic\Panda.cs" />

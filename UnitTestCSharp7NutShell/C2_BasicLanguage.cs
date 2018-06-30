@@ -390,7 +390,7 @@ namespace UnitTestC7NutShell
 
 		[DataTestMethod]
 		[TestCategory("Boolean Types - Equality and Comparision Operators")]
-		[DataRow(true,true,false,true)]
+		[DataRow(true, true, false, true)]
 		[DataRow(true, false, false, true)]
 		[DataRow(false, true, false, true)]
 		[DataRow(false, false, false, false)]
@@ -446,6 +446,208 @@ namespace UnitTestC7NutShell
 
 			//assert
 			Assert.AreEqual(expected, max);
+		}
+
+		#endregion
+
+		#region String Types
+
+		[TestMethod]
+		[TestCategory("String Types")]
+		public void StringIsAReferenceType()
+		{
+			//arrange
+			string a = "test";
+			string b = "test";
+			//act
+
+			bool IsEqual = (a == b);
+
+			//assert
+			Assert.IsTrue(IsEqual);
+		}
+
+		[TestMethod]
+		[TestCategory("String Types")]
+		public void StringEscapeVsVerbatimBackslash()
+		{
+			//arrange
+			string escape = "\\\\server\\fileshare\\helloworld.cs";
+			string verbatim = @"\\server\fileshare\helloworld.cs";
+			//act
+
+			bool IsEqual = (escape == verbatim);
+
+			//assert
+			Assert.IsTrue(IsEqual);
+		}
+
+		[TestMethod]
+		[TestCategory("String Types")]
+		public void StringEscapeVsVerbatiMultiline()
+		{
+			//arrange
+			string escape = "First Line\r\nSecond Line";
+			string verbatim = @"First Line
+Second Line";
+			//act
+
+			bool IsEqual = (escape == verbatim);
+
+			//assert True if your IDE uses CR-LF line separators:
+			Assert.IsTrue(IsEqual);
+		}
+
+		[DataTestMethod]
+		[TestCategory("String Types")]
+		[DataRow("a", "b", "ab")]
+		[DataRow("a", "5", "a5")]
+		[DataRow("Tom", "Boy", "TomBoy")]
+		public void Stringconcatenation(string a, string b, string expected)
+		{
+			//arrange
+
+			//act
+			string s = a + b;
+
+			//assert
+			Assert.AreEqual(expected, s);
+		}
+
+		[TestMethod]
+		[TestCategory("String Types")]
+		public void StringInterpolation()
+		{
+			//arrange
+			int x = 4;
+			string expected = "A square has 4 sides";
+
+			//act
+			string a = $"A square has {x} sides";
+
+			//assert
+			Assert.AreEqual(expected, a);
+		}
+
+
+
+		#endregion
+
+		#region Arrays
+
+		[TestMethod]
+		[TestCategory("Arrays")]
+		public void Arrays()
+		{
+			//arrange
+			C7NutShell.C2_BasicLanguage.Array.SpeechSound SpeechSound = new C7NutShell.C2_BasicLanguage.Array.SpeechSound();
+			char[] vowles = SpeechSound.Vowels;
+
+			//act
+
+			//assert
+			Assert.AreEqual('e', vowles[1]);
+		}
+
+		[TestMethod]
+		[TestCategory("Arrays")]
+		public void ArraysIterate()
+		{
+			//arrange
+			C7NutShell.C2_BasicLanguage.Array.SpeechSound SpeechSound = new C7NutShell.C2_BasicLanguage.Array.SpeechSound();
+			char[] vowles = SpeechSound.Vowels;
+			string vowlesConcatinated = "";
+
+			//act
+			for (int i = 0; i < vowles.Length; i++)
+			{
+				vowlesConcatinated += vowles[i];
+			}
+
+			//assert
+			Assert.AreEqual("aeiou", vowlesConcatinated);
+		}
+
+
+		[TestMethod]
+		[TestCategory("Arrays")]
+		public void ArraysSingleStepDeclare()
+		{
+			//arrange
+			char[] vowelsA = new char[] { 'a', 'e', 'i', 'o', 'u' };
+
+			//act
+			char[] vowelsB = { 'a', 'e', 'i', 'o', 'u' };
+
+			//assert
+			Assert.AreEqual(vowelsA[2] , vowelsB[2]);
+		}
+
+		[TestMethod]
+		[TestCategory("Arrays - Default Element Initialization")]
+		public void PreinitializesDefaultValues()
+		{
+			//arrange
+			int[] a = new int[1000];
+
+			//act
+
+			//assert
+			Assert.AreEqual(0, a[123]);
+		}
+
+		[TestMethod]
+		[TestCategory("Arrays - Default Element Initialization")]
+		public void ElementValueType()
+		{
+			//arrange
+			StructPoint[] a = new StructPoint[1000];
+			
+			//act
+			int x = a[500].X;
+
+			//assert
+			Assert.AreEqual(0, x);
+		}
+
+		[TestMethod]
+		[TestCategory("Arrays - Default Element Initialization")]
+		public void ElementReferenceType()
+		{
+			//arrange
+			ClassPoint[] a = new ClassPoint[1000];
+
+			//act & assert
+			try
+			{
+				int x = a[500].X;
+				Assert.Fail("no exception thrown");
+			}
+			catch (Exception ex)
+			{
+
+				Assert.IsTrue(ex.Message == "Object reference not set to an instance of an object.");
+			}		
+		}
+
+		[TestMethod]
+		[TestCategory("Arrays - Default Element Initialization")]
+		public void ElementReferenceTypeExplicitlyInstantiate()
+		{
+			//arrange
+			ClassPoint[] a = new ClassPoint[1000];
+
+			//act
+			for (int i = 0; i < a.Length; i++)
+			{
+				a[i] = new ClassPoint();
+			}
+
+			int x = a[500].X;
+
+			//assert
+			Assert.AreEqual(0, x);
+
 		}
 
 		#endregion
