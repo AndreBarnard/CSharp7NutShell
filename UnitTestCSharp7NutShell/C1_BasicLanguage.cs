@@ -6,8 +6,9 @@ namespace UnitTestCSharp7NutShell
 	[TestClass]
 	public class C1_BasicLanguage
 	{
-		#region Reference types
+		#region Type Basic
 		[TestMethod]
+		[TestCategory("Type Basic - Value Types Versus Reference types")]
 		public void ContrastInstanceStaticMembers()
 		{
 
@@ -22,6 +23,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Type Basic - Value Types Versus Reference types")]
 		public void AssignmentValueTypeInstance()
 		{
 			StructPoint p1 = new StructPoint();
@@ -37,6 +39,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Type Basic - Value Types Versus Reference types")]
 		public void AssignmentReferenceypeInstance()
 		{
 			ClassPoint p1 = new ClassPoint();
@@ -54,6 +57,15 @@ namespace UnitTestCSharp7NutShell
 
 		#region Numeric Types
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
+		public void NumericliteralTypeC7UnderscoreReadeble()
+		{
+			int million = 1_000_000;
+			Assert.AreEqual(1000000, million);
+		}
+
+		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
 		public void NumericliteralTypeInferenceDecimal()
 		{
 			Type type = 1.0.GetType();
@@ -61,6 +73,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
 		public void NumericliteralTypeInferenceExponentialSymbolDecimal()
 		{
 			Type type = 1E06.GetType();
@@ -68,6 +81,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
 		public void NumericliteralTypeInferenceInterger()
 		{
 			Type type = 1.GetType();
@@ -75,6 +89,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
 		public void NumericliteralTypeInferenceUInt32()
 		{
 			Type type = 0xF0000000.GetType();
@@ -82,6 +97,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Literals")]
 		public void NumericliteralTypeInferenceInt64()
 		{
 			Type type = 0x100000000.GetType();
@@ -90,6 +106,7 @@ namespace UnitTestCSharp7NutShell
 
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Conversions")]
 		public void ImplicitConversionIntToLong()
 		{
 			int x = 12345;
@@ -98,6 +115,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Conversions")]
 		public void ExplicitConversionIntToShort()
 		{
 			int x = 12345;
@@ -107,6 +125,7 @@ namespace UnitTestCSharp7NutShell
 
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Numeric Conversions")]
 		public void MagnitudePreservedPrecisionLost()
 		{
 			int i1 = 100000001;
@@ -116,10 +135,9 @@ namespace UnitTestCSharp7NutShell
 			Assert.AreNotEqual(i1, i2);
 		}
 
-		#region Increment and Decrement Operators
 
 		[TestMethod]
-
+		[TestCategory("Numeric Types - Specialized Operations on Integral Types")]
 		public void Outputs0xisnow1()
 		{
 			int x = 0;
@@ -128,6 +146,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Specialized Operations on Integral Types")]
 		public void Outputs1yisnow1()
 		{
 			int y = 0;
@@ -135,11 +154,8 @@ namespace UnitTestCSharp7NutShell
 			Assert.AreEqual(1, ++y);
 		}
 
-
-		#endregion
-
-		#region Overflow & Overflow  check operators
 		[TestMethod]
+		[TestCategory("Numeric Types - Specialized Operations on Integral Types")]
 		public void intOverflowtoMaxValue()
 		{
 			int i = int.MinValue;
@@ -148,6 +164,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Specialized Operations on Integral Types")]
 		public void CheckedExpression()
 		{
 			int a = 1000000;
@@ -166,6 +183,7 @@ namespace UnitTestCSharp7NutShell
 		}
 
 		[TestMethod]
+		[TestCategory("Numeric Types - Specialized Operations on Integral Types")]
 		public void CheckedAllExpressionStatementBlock()
 		{
 			int a = 1000000;
@@ -188,7 +206,6 @@ namespace UnitTestCSharp7NutShell
 			}
 
 		}
-		#endregion
 
 		#endregion
 
