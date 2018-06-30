@@ -621,6 +621,7 @@ Second Line";
 			try
 			{
 				int x = a[500].X;
+
 				Assert.Fail("no exception thrown");
 			}
 			catch (Exception ex)
