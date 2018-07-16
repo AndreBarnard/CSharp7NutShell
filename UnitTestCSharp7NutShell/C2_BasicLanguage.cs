@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using C7NutShell.C2_BasicLanguage;
+using System.Text;
 
 namespace UnitTestC7NutShell
 {
@@ -652,7 +653,7 @@ Second Line";
 		}
 
 		[TestMethod]
-		[TestCategory("Arrays - Multidimensional Arraysn")]
+		[TestCategory("Arrays - Multidimensional Arrays")]
 		public void RectangularArrays()
 		{
 			//arrange
@@ -681,7 +682,7 @@ Second Line";
 
 
 		[TestMethod]
-		[TestCategory("Arrays - Multidimensional Arraysn")]
+		[TestCategory("Arrays - Multidimensional Arrays")]
 		public void Jaggedarrays()
 		{
 			//arrange
@@ -706,6 +707,70 @@ Second Line";
 
 			//assert
 			Assert.IsTrue(matrix.Length == matrix2.Length);
+
+		}
+
+		#endregion
+
+
+		#region
+		[DataTestMethod]
+		[DataRow(1,2)]
+		[DataRow(7, 8)]
+		[DataRow(20, 21)]
+		[DataRow(100, 101)]
+		[TestCategory("Variables and Parameters")]
+		public void Stack(int x, int listLenght)
+		{
+			//Arrange
+			C7NutShell.C2_BasicLanguage.VariablesAndParameters.Stack stack = new C7NutShell.C2_BasicLanguage.VariablesAndParameters.Stack();
+
+			//Act
+			stack.Factorial(x);
+
+			//Assert
+			Assert.AreEqual(listLenght, stack.IntergerList.Count);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void Heap()
+		{
+			StringBuilder ref1 = new StringBuilder("object1");
+			Console.WriteLine(ref1);
+			// The StringBuilder referenced by ref1 is now eligible for GC.
+
+			StringBuilder ref2 = new StringBuilder("object2");
+			StringBuilder ref3 = ref2;
+			// The StringBuilder referenced by ref2 is NOT yet eligible for GC.
+
+			Console.WriteLine(ref3);
+		}
+
+		[DataTestMethod]
+		[DataRow("System.Int32", 0)]
+		//[DataRow("System.String", null)]
+		[DataRow("System.Char", '\0')]
+		[DataRow("System.Boolean", false)]
+		[DataRow("System.Decimal", 0)]
+		[TestCategory("Variables and Parameters")]
+		public void DefaultValues(string FullyQualifiedName, object expectedValue)
+		{			
+
+			Type t = Type.GetType(FullyQualifiedName);
+
+			//Arrange
+			//Activator.CreateInstance(t);
+			//Act
+
+			//decimal d = default(decimal);
+
+			var defaultValue = C7NutShell.C2_BasicLanguage.VariablesAndParameters.Default.GetDefaultValue(t);
+
+
+			//Assert
+			Assert.AreEqual(expectedValue, defaultValue);
 
 		}
 
