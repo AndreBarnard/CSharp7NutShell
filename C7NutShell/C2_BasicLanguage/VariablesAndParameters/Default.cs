@@ -10,9 +10,12 @@ namespace C7NutShell.C2_BasicLanguage.VariablesAndParameters
 	{
 		public static T  GetDefaultValue<T>(T item)
 		{
-			var result = default(T);
+			return default(T);
+		}
 
-			return result;
+		public static T GetDefaultGeneric<T>()
+		{
+			return default(T);
 		}
 
 	}

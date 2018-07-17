@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using C7NutShell.C2_BasicLanguage;
 using System.Text;
+using C7NutShell.C2_BasicLanguage.VariablesAndParameters;
 
 namespace UnitTestC7NutShell
 {
@@ -713,7 +714,7 @@ Second Line";
 		#endregion
 
 
-		#region
+		#region Variables and Parameters
 		[DataTestMethod]
 		[DataRow(1,2)]
 		[DataRow(7, 8)]
@@ -749,30 +750,103 @@ Second Line";
 		}
 
 		[DataTestMethod]
-		[DataRow("System.Int32", 0)]
-		//[DataRow("System.String", null)]
-		[DataRow("System.Char", '\0')]
-		[DataRow("System.Boolean", false)]
-		[DataRow("System.Decimal", 0)]
+		[DataRow(1, 2)]
+		[DataRow(7, 8)]
+		[DataRow(19,20)]
+		[DataRow(-1, 0)]
 		[TestCategory("Variables and Parameters")]
 		public void DefaultValues(string FullyQualifiedName, object expectedValue)
-		{			
+		{
 
-			Type t = Type.GetType(FullyQualifiedName);
+			//Type t = Type.GetType(FullyQualifiedName);
 
 			//Arrange
-			//Activator.CreateInstance(t);
+			//
+			object defaultValue;
+
 			//Act
 
-			//decimal d = default(decimal);
-
-			var defaultValue = C7NutShell.C2_BasicLanguage.VariablesAndParameters.Default.GetDefaultValue(t);
-
+			switch (FullyQualifiedName)
+			{
+				case "System.Int32":
+					defaultValue = default(Int32);
+					break;
+				case "System.Char":
+					defaultValue = default(Char);
+					break;
+				case "System.Boolean":
+					defaultValue = default(Boolean);
+					break;
+				case "System.Decimal":
+					defaultValue = default(Decimal);
+					expectedValue = Convert.ToDecimal(expectedValue);
+					break;
+				case "System.String":
+					defaultValue = default(String);
+					break;
+				default:
+					defaultValue = null;
+					break;
+			}
 
 			//Assert
 			Assert.AreEqual(expectedValue, defaultValue);
 
 		}
+
+
+		[DataTestMethod]
+		[DataRow(1, 2)]
+		[DataRow(7, 8)]
+		[DataRow(20, 21)]
+		[DataRow(100, 101)]
+		[TestCategory("Variables and Parameters")]
+		public void Parameters(int p, int expected)
+		{
+			//Arrange
+			//Act
+			p = p + 1;
+
+			//Assert
+			Assert.AreEqual(expected, p);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void ValueParameter()
+		{
+			StringBuilder sb = new StringBuilder();
+			ParameterModifier.Foo(sb); // Make a copy of x
+
+			Assert.AreEqual("test", sb.ToString());
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void refmodifier()
+		{
+			int x = 8;
+			ParameterModifier.Foo(ref x); // Ask Foo to deal directly with x
+			Assert.AreEqual(9,x); // x is now 9
+		}
+
+		[DataTestMethod]
+		[DataRow("Penn", "Teller")]
+		[DataRow("Waldo", "Jeandre")]
+		[DataRow("Girl", "Boy")]
+		[DataRow("Sun", "Moon")]
+		[TestCategory("Variables and Parameters")]
+		public void refmodifierSwap(string x, string y)
+		{
+			//Arrange
+			string expected = y;
+			//Act
+			ParameterModifier.Swap(ref x, ref y);
+			//Assert
+			Assert.AreEqual(expected, x);
+		}
+
 
 		#endregion
 	}
