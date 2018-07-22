@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using C7NutShell.C2_BasicLanguage;
 using System.Text;
 using C7NutShell.C2_BasicLanguage.VariablesAndParameters;
+using C7NutShell.C2_BasicLanguage.NULL;
+using C7NutShell.C2_BasicLanguage.Statement;
 
 namespace UnitTestC7NutShell
 {
@@ -713,10 +715,9 @@ Second Line";
 
 		#endregion
 
-
 		#region Variables and Parameters
 		[DataTestMethod]
-		[DataRow(1,2)]
+		[DataRow(1, 2)]
 		[DataRow(7, 8)]
 		[DataRow(20, 21)]
 		[DataRow(100, 101)]
@@ -752,7 +753,7 @@ Second Line";
 		[DataTestMethod]
 		[DataRow(1, 2)]
 		[DataRow(7, 8)]
-		[DataRow(19,20)]
+		[DataRow(19, 20)]
 		[DataRow(-1, 0)]
 		[TestCategory("Variables and Parameters")]
 		[Ignore]
@@ -829,7 +830,7 @@ Second Line";
 		{
 			int x = 8;
 			ParameterModifier.Foo(ref x); // Ask Foo to deal directly with x
-			Assert.AreEqual(9,x); // x is now 9
+			Assert.AreEqual(9, x); // x is now 9
 		}
 
 		[DataTestMethod]
@@ -850,7 +851,7 @@ Second Line";
 
 		[DataTestMethod]
 		[DataRow("Stevie Ray Vaughan", "Stevie Ray", "Vaughan")]
-		[DataRow("Andre Barnard", "Andre","Barnard")]
+		[DataRow("Andre Barnard", "Andre", "Barnard")]
 		[DataRow("Jeanerien Michelle Barnard", "Jeanerien Michelle", "Barnard")]
 		[DataRow("Piet Pompies", "Piet", "Pompies")]
 		[TestCategory("Variables and Parameters")]
@@ -859,7 +860,7 @@ Second Line";
 			//Arrange
 			string firstName, lastName;
 			//Act
-			ParameterModifier.Split(Fullname,out firstName, out lastName);
+			ParameterModifier.Split(Fullname, out firstName, out lastName);
 			//Assert
 			Assert.AreEqual(expectedFirstName, firstName);
 			Assert.AreEqual(expectedLastName, lastName);
@@ -941,7 +942,7 @@ Second Line";
 
 			//Arrange
 			string yFirstString = ParameterModifier.ConcatinateInt(y: 2, x: 1);
-			string xFirstString = ParameterModifier.ConcatinateInt(x:1, y:2);
+			string xFirstString = ParameterModifier.ConcatinateInt(x: 1, y: 2);
 
 			//Assert
 			Assert.AreEqual(yFirstString, xFirstString);
@@ -954,7 +955,7 @@ Second Line";
 		{
 
 			//Arrange
-			int[] number = {0,1,2,3,4};
+			int[] number = { 0, 1, 2, 3, 4 };
 			ref int numRef = ref number[2];
 
 			//Act 
@@ -991,9 +992,279 @@ Second Line";
 		}
 
 
+		#endregion
+
+		#region Null Operators
+		[TestMethod]
+		[TestCategory("Null Operators")]
+		public void Null_Coalescing_Operator()
+		{
+			//Arrange
+			string s1 = null;
+
+			//Act
+			string s2 = s1 ?? "nothing";
+
+			//Assert
+			Assert.AreEqual("nothing", s2);
+		}
+
+		[TestMethod]
+		[TestCategory("Null Operators")]
+		public void Elvis_Operator()
+		{
+			//Arrange
+			System.Text.StringBuilder sb = null;
+
+			//Act
+			string s1 = sb?.ToString();
+
+			//Assert
+			Assert.IsNull(s1);
+		}
+
+		[TestMethod]
+		[TestCategory("Null Operators")]
+		public void Elvis_Operator_Short_Circuits()
+		{
+			//Arrange
+			System.Text.StringBuilder sb = null;
+
+			//Act
+			string s1 = sb?.ToString().ToUpper();
+
+			//Assert
+			Assert.IsNull(s1);
+		}
+
+		[TestMethod]
+		[TestCategory("Null Operators")]
+		public void Elvis_Operator_call_void_method()
+		{
+			//Arrange
+			Elvis evlis = null;
+
+			//Act
+			evlis?.Quote();
+
+			//Assert
+			Assert.IsNull(evlis);
+		}
 
 
+		[TestMethod]
+		[TestCategory("Null Operators")]
+		public void Elvis_Operator_Combined_Null_Coalescing_Operator()
+		{
+			//Arrange
+			System.Text.StringBuilder sb = null;
 
+			//Act
+			string s = sb?.ToString() ?? "nothing";
+
+			//Assert
+			Assert.AreEqual("nothing", s);
+		}
+
+		#endregion
+
+		#region Statments
+		[DataTestMethod]
+		[DataRow(7)]
+		[DataRow(35)]
+		[DataRow(21)]
+		[DataRow(18)]
+		[DataRow(70)]
+		[TestCategory("Statments")]
+		public void if_else_statement(int age)
+		{
+			if (age >= 35)
+				Console.WriteLine("You can be president!");
+			else if (age >= 21)
+				Console.WriteLine("You can drink!");
+			else if (age >= 18)
+				Console.WriteLine("You can vote!");
+			else
+				Console.WriteLine("You can wait!");
+		}
+
+		[DataTestMethod]
+		[DataRow(7, "7")]
+		[DataRow(13, "King")]
+		[DataRow(-1, "Queen")]
+		[DataRow(12, "Queen")]
+		[DataRow(11, "Jack")]
+		[TestCategory("Statments")]
+		public void switch_statement(int cardNumber, string ExpectedCard)
+		{
+			string cardName;
+			switch (cardNumber)
+			{
+				case 13:
+					cardName = "King";
+					break;
+				case 12:
+					cardName = "Queen";
+					break;
+				case 11:
+					cardName = "Jack";
+					break;
+				case -1:          //Jocker is -1
+					goto case 12;   //In the game joker counts as Queen
+				default:
+					cardName = cardNumber.ToString();
+					break;
+			}
+
+			Assert.AreEqual(ExpectedCard, cardName);
+		}
+
+
+		[DataTestMethod]
+		[DataRow(7, "Plain Card")]
+		[DataRow(13, "Face Card")]
+		[DataRow(12, "Face Card")]
+		[DataRow(11, "Face Card")]
+		[TestCategory("Statments")]
+		public void switch_statement_execute_same_code(int cardNumber, string ExpectedCard)
+		{
+			string cardName;
+			switch (cardNumber)
+			{
+				case 13:
+				case 12:
+				case 11:
+					cardName = "Face Card";
+					break;
+				default:
+					cardName = "Plain Card";
+					break;
+			}
+
+			Assert.AreEqual(ExpectedCard, cardName);
+		}
+
+		[DataTestMethod]
+		[DataRow(7, "int")]
+		[DataRow("I am a string value", "string")]
+		[DataRow('A', "don't")]
+		[TestCategory("Statments")]
+		public void switch_statement_types(object x, string ExpectedString)
+		{
+			string typeMessage = SwitchStatement.TellMeMyType(x);
+
+			Console.WriteLine(typeMessage);
+			StringAssert.Contains(typeMessage, ExpectedString);
+		}
+
+		[DataTestMethod]
+		[DataRow(true, "True")]
+		[DataRow(false, "False")]
+		[TestCategory("Statments")]
+		public void switch_statement_with_keyword(bool x, string ExpectedString)
+		{
+			string typeMessage = SwitchStatement.BoolStringValue(x);
+
+			Console.WriteLine(typeMessage);
+			StringAssert.Contains(typeMessage, ExpectedString);
+		}
+
+		[TestMethod]
+		[TestCategory("Statments")]
+		public void switch_statemen_ValueGreaterThan1000()
+		{
+			float f = 1500;
+
+			string floatString = SwitchStatement.ValueGreaterThan1000(f);
+
+			Assert.AreEqual("We can refer to x here but not f or d or m", floatString);
+
+			double d = 1500;
+
+			string doubleString = SwitchStatement.ValueGreaterThan1000(d);
+
+			Assert.AreEqual("We can refer to x here but not f or d or m", doubleString);
+
+			decimal dl = 1500;
+
+			string decimalString = SwitchStatement.ValueGreaterThan1000(dl);
+
+			Assert.AreEqual("We can refer to x here but not f or d or m", decimalString);
+
+			string nullString = SwitchStatement.ValueGreaterThan1000(null);
+			Assert.AreEqual("Nothing here", nullString);
+		}
+
+		#endregion
+
+		#region  Iteration Statements
+
+		[TestMethod]
+		[TestCategory("Iteration Statements")]
+		public void for_Fibonacci()
+		{
+			string FibonaccitString = IterationStatements.FibonacciSeq();
+
+			Assert.AreEqual("1,1,2,3,5,8,13,21,34,55", FibonaccitString);
+		}
+
+		#endregion
+
+		#region jump statments
+
+		[TestMethod]
+		[TestCategory("Jump Statements")]
+		public void break_statement()
+		{
+			int x = 0;
+			while (true)
+			{
+				if (x++ > 5)
+					break; // break from the loop
+			}
+
+			Assert.AreEqual(7, x);			// execution continues here after break
+		}
+
+		[TestMethod]
+		[TestCategory("Jump Statements")]
+		public void continue_statement()
+		{
+			//Arrange
+			StringBuilder sb = new StringBuilder();
+			string expectedString = "1 3 5 7 9 ";
+			//Act
+			for (int i = 0; i < 10; i++)
+			{
+				if ((i % 2) == 0) // If i is even,
+					continue; // continue with next iteration
+				sb.Append($"{i} ");
+			}
+
+			//Assert
+			Assert.AreEqual(expectedString, sb.ToString());      // execution continues here after break
+		}
+
+		[TestMethod]
+		[TestCategory("Jump Statements")]
+		public void goto_statement()
+		{
+			//Arrange
+			StringBuilder sb = new StringBuilder();
+			string expectedString = "1 2 3 4 5 ";
+			//Act
+			int i = 1;
+			startloop:
+			if(i <= 5)
+			{
+				sb.Append($"{i} ");
+				i++;
+				goto startloop;
+			}
+
+			//Assert
+			Assert.AreEqual(expectedString, sb.ToString());      // execution continues here after break
+		}
 
 
 		#endregion

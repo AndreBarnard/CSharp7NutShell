@@ -47,6 +47,9 @@
     <Compile Include="C2_BasicLanguage\Basic\Panda.cs" />
     <Compile Include="C2_BasicLanguage\Basic\Point.cs" />
     <Compile Include="C2_BasicLanguage\Boolean\Umberalla.cs" />
+    <Compile Include="C2_BasicLanguage\NULL\Elvis.cs" />
+    <Compile Include="C2_BasicLanguage\Statement\IterationStatements.cs" />
+    <Compile Include="C2_BasicLanguage\Statement\SwitchStatement.cs" />
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\Default.cs" />
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\ParameterModifier.cs" />
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\Stack.cs" />
