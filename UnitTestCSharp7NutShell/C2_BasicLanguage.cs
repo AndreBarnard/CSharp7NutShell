@@ -755,6 +755,7 @@ Second Line";
 		[DataRow(19,20)]
 		[DataRow(-1, 0)]
 		[TestCategory("Variables and Parameters")]
+		[Ignore]
 		public void DefaultValues(string FullyQualifiedName, object expectedValue)
 		{
 
@@ -846,6 +847,153 @@ Second Line";
 			//Assert
 			Assert.AreEqual(expected, x);
 		}
+
+		[DataTestMethod]
+		[DataRow("Stevie Ray Vaughan", "Stevie Ray", "Vaughan")]
+		[DataRow("Andre Barnard", "Andre","Barnard")]
+		[DataRow("Jeanerien Michelle Barnard", "Jeanerien Michelle", "Barnard")]
+		[DataRow("Piet Pompies", "Piet", "Pompies")]
+		[TestCategory("Variables and Parameters")]
+		public void outmodifierSplit(string Fullname, string expectedFirstName, string expectedLastName)
+		{
+			//Arrange
+			string firstName, lastName;
+			//Act
+			ParameterModifier.Split(Fullname,out firstName, out lastName);
+			//Assert
+			Assert.AreEqual(expectedFirstName, firstName);
+			Assert.AreEqual(expectedLastName, lastName);
+		}
+
+
+		[DataTestMethod]
+		[DataRow("Stevie Ray Vaughan", "Stevie Ray", "Vaughan")]
+		[DataRow("Andre Barnard", "Andre", "Barnard")]
+		[DataRow("Jeanerien Michelle Barnard", "Jeanerien Michelle", "Barnard")]
+		[DataRow("Piet Pompies", "Piet", "Pompies")]
+		[TestCategory("Variables and Parameters")]
+		public void Csharpout7modifierSplit(string Fullname, string expectedFirstName, string expectedLastName)
+		{
+			//Arrange
+
+			//Act
+			ParameterModifier.Split(Fullname, out string firstName, out string lastName);
+			//Assert
+			Assert.AreEqual(expectedFirstName, firstName);
+			Assert.AreEqual(expectedLastName, lastName);
+		}
+
+		[DataTestMethod]
+		[DataRow("Stevie Ray Vaughan", "Stevie Ray")]
+		[DataRow("Andre Barnard", "Andre")]
+		[DataRow("Jeanerien Michelle Barnard", "Jeanerien Michelle")]
+		[DataRow("Piet Pompies", "Piet")]
+		[TestCategory("Variables and Parameters")]
+		public void Csharp_discard_out7modifierSplit(string Fullname, string expectedFirstName)
+		{
+			//Arrange
+
+			//Act
+			ParameterModifier.Split(Fullname, out string firstName, out _);
+			//Assert
+			Assert.AreEqual(expectedFirstName, firstName);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void paramsmodifier()
+		{
+
+			//Arrange
+			int expectedSum = 10;
+
+			//Act
+
+			int total = ParameterModifier.Sum(1, 2, 3, 4);
+
+			//Assert
+			Assert.AreEqual(expectedSum, total);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void optionalParameters()
+		{
+
+			//Arrange
+			string expectedString = "1, 0";
+
+			//Act
+
+			string actualString = ParameterModifier.ConcatinateInt(1);
+
+			//Assert
+			Assert.AreEqual(expectedString, actualString);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void namedArguments()
+		{
+
+			//Arrange
+			string yFirstString = ParameterModifier.ConcatinateInt(y: 2, x: 1);
+			string xFirstString = ParameterModifier.ConcatinateInt(x:1, y:2);
+
+			//Assert
+			Assert.AreEqual(yFirstString, xFirstString);
+
+		}
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void refLocals()
+		{
+
+			//Arrange
+			int[] number = {0,1,2,3,4};
+			ref int numRef = ref number[2];
+
+			//Act 
+			numRef *= 10;
+
+			Console.WriteLine(numRef);
+			Console.WriteLine(number[2]);
+
+			//Assert
+			Assert.AreEqual(20, number[2]);
+
+		}
+
+
+		static string X = "Old Value";
+		static ref string GetX() => ref X;
+
+		[TestMethod]
+		[TestCategory("Variables and Parameters")]
+		public void refReturns()
+		{
+
+			//Arrange			
+			ref string xRef = ref GetX();
+
+			//Act 
+			xRef = "New Value";
+			Console.WriteLine(xRef);
+
+
+			//Assert
+			Assert.AreEqual("New Value", X);
+
+		}
+
+
+
+
+
 
 
 		#endregion
