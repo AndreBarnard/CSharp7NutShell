@@ -26,3 +26,5 @@ C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7Nu
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7NutShell\obj\Debug\UnitTestCSharp7NutShell.csprojResolveAssemblyReference.cache
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7NutShell\obj\Debug\UnitTestCSharp7NutShell.dll
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7NutShell\obj\Debug\UnitTestCSharp7NutShell.pdb
+C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7NutShell\bin\Debug\System.ValueTuple.dll
+C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\UnitTestCSharp7NutShell\bin\Debug\System.ValueTuple.xml

@@ -53,6 +53,8 @@
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\Default.cs" />
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\ParameterModifier.cs" />
     <Compile Include="C2_BasicLanguage\VariablesAndParameters\Stack.cs" />
+    <Compile Include="C3_CreatingTypes\InstanceConstructors.cs" />
+    <Compile Include="C3_CreatingTypes\Methods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

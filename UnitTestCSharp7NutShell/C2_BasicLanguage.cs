@@ -1171,7 +1171,7 @@ Second Line";
 
 		[TestMethod]
 		[TestCategory("Statments")]
-		public void switch_statemen_ValueGreaterThan1000()
+		public void switch_statement_ValueGreaterThan1000()
 		{
 			float f = 1500;
 
