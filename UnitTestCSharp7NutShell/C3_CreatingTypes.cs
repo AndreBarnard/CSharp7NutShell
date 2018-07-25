@@ -117,6 +117,7 @@ namespace UnitTestCSharp7NutShell
 
 			//Act
 			//rect.Deconstruct(out var width, out var height); // Deconstruction
+					
 
 			var (width, height) = rect;
 

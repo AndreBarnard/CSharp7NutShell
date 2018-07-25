@@ -31,7 +31,7 @@ namespace C7NutShell.C3_CreatingTypes
 
 	public class Rectangle
 	{
-		public readonly float Width, Height;
+		private readonly float Width, Height;
 
 		public Rectangle(float width, float height)
 		{
