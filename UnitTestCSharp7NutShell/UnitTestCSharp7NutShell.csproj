@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Book\C-7-0-in-a-Nutshell-The-Definitive-Reference.pdf" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +67,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bookpage.txt" />
+    <Content Include="Book\Bookpage.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
