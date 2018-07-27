@@ -112,12 +112,14 @@ namespace UnitTestCSharp7NutShell
 		public void Deconstructors()
 		{
 
+			var d = DateTime.MinValue;
+
 			//Arrange
 			var rect = new Rectangle (3, 4);
 
 			//Act
 			//rect.Deconstruct(out var width, out var height); // Deconstruction
-					
+
 
 			var (width, height) = rect;
 
