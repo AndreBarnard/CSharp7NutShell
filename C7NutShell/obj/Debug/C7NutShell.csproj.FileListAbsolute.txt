@@ -6,4 +6,5 @@ C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\bin\De
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\bin\Debug\C7NutShell.pdb
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\obj\Debug\C7NutShell.dll
 C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\obj\Debug\C7NutShell.pdb
-C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\obj\Debug\C7NutShell.csprojResolveAssemblyReference.cache
+C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\obj\Debug\C7NutShell.csprojAssemblyReference.cache
+C:\Dev\CSharp7NutShell\UnitTestCSharp7NutShell\CSharp7NutShell\C7NutShell\obj\Debug\C7NutShell.csproj.CoreCompileInputs.cache

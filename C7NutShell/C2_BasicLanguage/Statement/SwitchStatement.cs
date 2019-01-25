@@ -36,7 +36,7 @@ namespace C7NutShell.C2_BasicLanguage.Statement
 		{
 			switch (x)
 			{
-				case bool b when b == true:
+				case bool b when b:
 					return "True";
 				case bool b:
 					return "False";
