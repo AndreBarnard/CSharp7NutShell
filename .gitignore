@@ -6,3 +6,15 @@ UnitTestCSharp7NutShell/bin/Debug/*
 */bin/*
 C7NutShell/bin/*
 C7NutShell/obj/*
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.AssemblyInfo.cs
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.AssemblyInfoInputs.cache
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.assets.cache
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.csproj.CoreCompileInputs.cache
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.csproj.FileListAbsolute.txt
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.csprojAssemblyReference.cache
+ThreadTest/obj/Debug/netcoreapp2.2/ThreadTest.pdb
+ThreadTest/obj/project.assets.json
+ThreadTest/obj/ThreadTest.csproj.nuget.cache
+ThreadTest/obj/ThreadTest.csproj.nuget.dgspec.json
+ThreadTest/obj/ThreadTest.csproj.nuget.g.props
+ThreadTest/obj/ThreadTest.csproj.nuget.g.targets
