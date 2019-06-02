@@ -1,0 +1,8 @@
+C7NutShell/obj/*
+UnitTestCSharp7NutShell/bin/*
+*.dll
+UnitTestCSharp7NutShell/bin/Debug/*
+.vs/*
+*/bin/*
+C7NutShell/bin/*
+C7NutShell/obj/*

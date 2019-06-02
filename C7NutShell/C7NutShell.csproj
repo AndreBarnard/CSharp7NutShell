@@ -41,24 +41,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C2_BasicLanguage\Array\SpeechSound.cs" />
-    <Compile Include="C2_BasicLanguage\Boolean\Dude.cs" />
-    <Compile Include="C2_BasicLanguage\Boolean\Numbers.cs" />
-    <Compile Include="C2_BasicLanguage\Basic\Panda.cs" />
-    <Compile Include="C2_BasicLanguage\Basic\Point.cs" />
-    <Compile Include="C2_BasicLanguage\Boolean\Umberalla.cs" />
-    <Compile Include="C2_BasicLanguage\NULL\Elvis.cs" />
-    <Compile Include="C2_BasicLanguage\Statement\IterationStatements.cs" />
-    <Compile Include="C2_BasicLanguage\Statement\SwitchStatement.cs" />
-    <Compile Include="C2_BasicLanguage\VariablesAndParameters\Default.cs" />
-    <Compile Include="C2_BasicLanguage\VariablesAndParameters\ParameterModifier.cs" />
-    <Compile Include="C2_BasicLanguage\VariablesAndParameters\Stack.cs" />
-    <Compile Include="C3_CreatingTypes\Enums.cs" />
-    <Compile Include="C3_CreatingTypes\Indexers.cs" />
-    <Compile Include="C3_CreatingTypes\Inheritance.cs" />
-    <Compile Include="C3_CreatingTypes\InstanceConstructors.cs" />
-    <Compile Include="C3_CreatingTypes\Methods.cs" />
-    <Compile Include="C3_CreatingTypes\Properties.cs" />
+    <Compile Include="C02_BasicLanguage\Array\SpeechSound.cs" />
+    <Compile Include="C02_BasicLanguage\Boolean\Dude.cs" />
+    <Compile Include="C02_BasicLanguage\Boolean\Numbers.cs" />
+    <Compile Include="C02_BasicLanguage\Basic\Panda.cs" />
+    <Compile Include="C02_BasicLanguage\Basic\Point.cs" />
+    <Compile Include="C02_BasicLanguage\Boolean\Umberalla.cs" />
+    <Compile Include="C02_BasicLanguage\NULL\Elvis.cs" />
+    <Compile Include="C02_BasicLanguage\Statement\IterationStatements.cs" />
+    <Compile Include="C02_BasicLanguage\Statement\SwitchStatement.cs" />
+    <Compile Include="C02_BasicLanguage\VariablesAndParameters\Default.cs" />
+    <Compile Include="C02_BasicLanguage\VariablesAndParameters\ParameterModifier.cs" />
+    <Compile Include="C02_BasicLanguage\VariablesAndParameters\Stack.cs" />
+    <Compile Include="C03_CreatingTypes\Enums.cs" />
+    <Compile Include="C03_CreatingTypes\Indexers.cs" />
+    <Compile Include="C03_CreatingTypes\Inheritance.cs" />
+    <Compile Include="C03_CreatingTypes\InstanceConstructors.cs" />
+    <Compile Include="C03_CreatingTypes\Methods.cs" />
+    <Compile Include="C03_CreatingTypes\Properties.cs" />
+    <Compile Include="C14_ConcurrencyandAsynchrony\C14TestUtility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

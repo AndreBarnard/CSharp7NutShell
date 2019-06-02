@@ -9,7 +9,7 @@ using C7NutShell.C2_BasicLanguage.Statement;
 namespace UnitTestC7NutShell
 {
 	[TestClass]
-	public class C2_BasicLanguage
+	public class C02_BasicLanguage
 	{
 		#region Type Basic
 		[TestMethod]

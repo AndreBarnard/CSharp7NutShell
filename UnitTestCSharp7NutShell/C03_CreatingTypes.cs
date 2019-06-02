@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace UnitTestCSharp7NutShell
 {
   [TestClass]
-  public class C3_CreatingTypes
+  public class C03_CreatingTypes
   {
 
     #region Classes

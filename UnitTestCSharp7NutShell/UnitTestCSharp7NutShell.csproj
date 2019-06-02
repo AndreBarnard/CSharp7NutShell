@@ -52,8 +52,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C2_BasicLanguage.cs" />
-    <Compile Include="C3_CreatingTypes.cs" />
+    <Compile Include="C14_ConcurrencyandAsynchrony.cs" />
+    <Compile Include="C02_BasicLanguage.cs" />
+    <Compile Include="C03_CreatingTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
